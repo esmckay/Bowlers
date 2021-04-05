@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Teams>
+
+@*has a home page button and then lists out all the buttons for the teams with an if statement for what team is selected*@
+
+<a class="btn btn-block btn-outline-secondary" asp-action="Index" asp-controller="Home" asp-route-teamid="">Home</a>
+<br />
+
+@foreach (var x in Model)
+{
+    <a class="btn btn-block @(x.TeamName == ViewBag.SelectedTeam ? "btn-primary" : "btn-outline-secondary")"
+       asp-action="Index" asp-controller="Home" 
+       asp-route-teamid="@x.TeamId" asp-route-teamname="@x.TeamName" asp-route-pageNum="1">@x.TeamName</a>
+    <br />
+}

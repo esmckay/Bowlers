@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Bowlers";
+}
+
+@model IndexViewModel
+
+<div class=" text-center">
+    <h1 class="display-4">Welcome</h1>
+    @*dynamic header*@
+    <h2>@Model.TeamName</h2>
+</div>
+
+@*Table that lists out the table headings and then loops through each of the bowlers*@
+<table class="table">
+
+    <thead class="text-center">
+        <tr class="text-center">
+            <th width="12%">First Name</th>
+            <th width="12%">Middle Init.</th>
+            <th width="12%">Last Name</th>
+            <th width="12%">Address</th>
+            <th width="12%">City</th>
+            <th width="12%">State</th>
+            <th width="12%">Zip</th>
+            <th width="12%">Phone Number</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var x in Model.Bowlers)
+        {
+            <tr>
+                <td width="12%">@x.BowlerFirstName</td>
+                <td width="12%">@x.BowlerMiddleInit</td>
+                <td width="12%">@x.BowlerLastName</td>
+                <td width="12%">@x.BowlerAddress</td>
+                <td width="12%">@x.BowlerCity</td>
+                <td width="12%">@x.BowlerState</td>
+                <td width="12%">@x.BowlerZip</td>
+                <td width="12%">@x.BowlerPhoneNumber</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*pagination to automatically handle how many pages we want to put on the page*@
+
+<div page-info="@Model.PageNumberingInfo" page-action="Index" page-classes-enabled="true" page-class="btn" 
+     page-class-normal="btn-outline-dark"
+     page-class-selected="btn-primary" page-url-teamname="@Model.TeamName"
+     class="btn-group-sm m-1"></div>
+
